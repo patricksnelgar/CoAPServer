@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="californium_lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/californium-core-1.0.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/californium-osgi-1.0.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/californium-proxy-1.0.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
