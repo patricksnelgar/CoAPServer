@@ -9,7 +9,7 @@ import java.util.Random;
 /**
  * Created by Patrick on 8/18/2015.
  */
-public class Node extends CoapClient {
+public class NewNode extends CoapClient {
     public static void main(String[] args){
         Random rand = new Random();
         if(args.length <= 0){

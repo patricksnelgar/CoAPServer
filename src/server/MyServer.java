@@ -9,6 +9,7 @@ public class MyServer {
         CoapServer simpleServer = new CoapServer();
         simpleServer.add(new TimeResource("system-time"));
         simpleServer.add(new RegisterNode("register"));
+        simpleServer.add(new NodeData("postNodeData"));
         simpleServer.start();
     }
 }
