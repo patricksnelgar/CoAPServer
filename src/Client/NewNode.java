@@ -18,7 +18,7 @@ public class NewNode extends CoapClient {
             System.out.println(response);
         } else {
             CoapClient node1 = new CoapClient("coap://127.0.0.1:/register");
-            String reg_info = "NodeID: "+Math.abs(rand.nextInt())+" NodeType: 0 NodeAddress: beef::02";
+            String reg_info = "NodeID: "+Math.abs(rand.nextInt())+" NodeType: 0 NodeAddress: beef::02 Battery: 98";
             CoapResponse resp = node1.post(reg_info, MediaTypeRegistry.TEXT_PLAIN);
             System.out.println(resp.isSuccess());
         }

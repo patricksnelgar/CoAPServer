@@ -20,6 +20,7 @@ public class RegisterNode extends CoapResource {
 
     int NodeID = -1;
     int NodeType = 0;
+    int Battery = -1;
     String NodeAddress;
 
 
@@ -77,7 +78,7 @@ public class RegisterNode extends CoapResource {
             ResultSet res = null;
 
             st = connection.createStatement();
-            res = st.executeQuery("INSERT INTO NODE_LIST (N_ID, N_Address, N_Type, N_Battery) VALUES(" + NodeID + ",'" + NodeAddress + "'," + NodeType + ",100)");
+            res = st.executeQuery("INSERT INTO NODE_LIST (N_ID, N_Address, N_Type, N_Battery) VALUES(" + NodeID + ",'" + NodeAddress + "'," + NodeType + ","+Battery+")");
 
             res.close();
             st.close();
@@ -110,7 +111,11 @@ public class RegisterNode extends CoapResource {
                     i++;
                     break;
                 }
-
+                case "Battery": {
+                    Battery = Integer.parseInt(split[i+1]);
+                    i++;
+                    break;
+                }
                 default: {
                     System.out.println("Unrecognized parameter: "+split[i]);
                 }
