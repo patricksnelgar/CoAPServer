@@ -34,7 +34,7 @@ public class NodeData extends CoapResource {
     private void postData(){
         try {
             System.out.println(nodeID);
-            String sql = "Insert into " + '"' + nodeID + '"' + " (N_ID, Sensor_1, Sensor_2, Sensor_3, Sensor_4) Values (" + nodeID + "," + sensor1 + "," + sensor2 + ",'" + sensor3 + "','" + sensor4 + "')";
+            String sql = "Insert into " + '"' + nodeID + '"' + " (N_ID, N_TIMESTAMP, TEMP_1, TEMP_2, RAINFALL, WINDSPEED) Values (" + nodeID + ",NOW()," + sensor1 + "," + sensor2 + ",'" + sensor3 + "','" + sensor4 + "')";
             Class.forName("org.hsqldb.jdbc.JDBCDriver");
             Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/wsn_db", "PATRICK", "TEST");
             Statement st = con.createStatement();
