@@ -9,8 +9,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import org.json.simple.*;
-
 /**
  * Created by Patrick on 25/08/2015.
  */
@@ -32,6 +30,7 @@ public class RecordSensorReadings extends CoapResource {
         if(success == -1) {
             ex.respond("-1");
         } else {
+            updateNodeStatus();
             boolean updateConfig = checkForUpdatedConfig(nodeID);
             ex.respond(""+updateConfig);
         }
@@ -58,6 +57,25 @@ public class RecordSensorReadings extends CoapResource {
             return -1;
         }
         return 0;
+    }
+
+    private void updateNodeStatus(){
+        try {
+            String sql = "UPDATE NODE_LIST SET N_LAST=NOW() WHERE N_ID='"+nodeID+"'";
+
+            Class.forName("org.hsqldb.jdbc.JDBCDriver");
+            Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/wsn_db", "PATRICK", "TEST");
+
+            Statement st = con.createStatement();
+            ResultSet res = st.executeQuery(sql);
+
+            res.close();
+            st.close();
+            con.close();
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private boolean checkForUpdatedConfig(int n_id){
